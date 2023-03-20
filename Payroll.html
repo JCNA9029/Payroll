@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" name="vieport" content="width=device-width, initial scale=1.0">
+        <title>Payroll Accounts</title>
+        <style>
+            .Form{
+                align-content: center ;
+                position:relative;
+            }
+            body{
+                background-color: lightblue;
+            }
+            .input{
+            width: 150px;
+            margin-right: 15px;
+            }
+           
+        </style>
+        <script>
+            var income = grossIncome;
+            var bawas = totalded;
+            function GIncome(grossIncome){
+                    var Pay = parseInt(document.getElementById("Pay").value);
+                    var Hour = parseInt(document.getElementById("Hour").value);
+                    var Days = parseInt(document.getElementById("Days").value);
+                    var Misc = parseInt(document.getElementById("Misc").value);
+                    var Percent = 0;
+                    switch (Hour){
+                        case 0:
+                            Percent = 0;
+                            break;
+                        case 1: 
+                            Percent = 0.125
+                            break;
+                        case 2:
+                            Percent = 0.25;
+                            break;  
+                        case 3:
+                            Percent = 0.375
+                            break; 
+                        case 4:
+                            Percent = 0.50;
+                            break; 
+                        case 5:
+                            Percent = 0.625;
+                            break; 
+                        case 6:
+                            Percent = 0.75;
+                            break; 
+                        case 7:
+                            Percent = 0.875;
+                            break;
+                        case 8:
+                            Percent = 1;
+                            break;
+                        default:
+                            Text = "Invalid"
+                    }
+                    var grossIncome = (Pay * Days) * Percent + Misc;
+                    alert(grossIncome)
+                    return grossIncome;
+            }
+      
+                function Deductions(totalded){
+                    var Tax = parseInt(document.getElementById("Tax").value);
+                    var SSS = parseInt(document.getElementById("SSS").value);
+                    var Pagibig = parseInt(document.getElementById("Pagibig").value);
+                    var HMO = parseInt(document.getElementById("HMO").value);
+                    var totalded = (Tax + SSS + Pagibig + HMO);
+                    alert("Your total deduction is: " + totalded);
+                     return totalded;
+                    
+                }
+               
+               //not yet working still fixing 
+               function Payment(){
+                    var employeeName = (document.getElementById("employeeName").value);
+                    var Results = "Employee Name: " + employeeName + "\n" + "Total Salary:" ;
+                    alert(Results)
+                }
+                //end
+        </script>
+
+    </head>
+    <body>
+        <div class="Form">
+                    <form>
+                        <table border="3" align="center" style="background-color: white;">
+                        <tr>
+                            <td colspan="4" align="center">
+                                <h1>Payroll for Employees</h1>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" align="center">
+                        <label for="employeeName">Employee Name: </label>
+                        <select name="employeeName" id="employeeName">
+                            <option value = "Robert Santos">Robert Santos</option>
+                            <option value = "John Michael">John Michael</option>
+                            <option value = "Mark Sennizer">Mark Sennizer</option>
+                            <option value = "Gustavo Fring">Gustavo Fring</option>
+                        </select>
+                </td>
+            </tr>
+            <tr><th><h3>Daily Pay: </h3></th>
+                <td>
+                    <input type="number" id="Pay">
+                </td>
+                <td>
+                    <label for="Hour"><h3>Hours Worked: </h3></label>
+                </td>
+                <td>
+                    <input type="=number" id="Hour">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="Days"><h3>Days Worked: </h3></label>
+                </td>
+                <td>
+                    <input type="number" id="Days">
+                </td>
+                <td>
+                    <label for="Misc"><h3>Misc. Pays: </h3></label>
+                </td>
+                <td>
+                    <input type="number" id="Misc">
+                </td>
+            </tr>
+            <tr><th><h3>Tax: </h3></th>
+                <td>
+                    <input type="number" id="Tax">
+                </td>
+                <th>
+                    <h3>SSS: </h3></label>
+                </th>
+                <td>
+                    <input type="=number" id="SSS">
+                </td>
+            </tr>
+            <tr>
+              
+                    <Th><h3>HMO: </h3></label></Th>
+               
+                <td>
+                    <input type="number" id="HMO">
+                </td>
+                <th>
+                    <label for="Pagibig"><h3>Pagibig: </h3></label>
+                </th>
+                <td>
+                    <input type="number" id="Pagibig">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" align="center">
+                    <button onclick="GIncome()"> Calculate Gross Income</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" align="center">
+                    <button onclick="Deductions()"> Deductions</button>               
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" align="center">
+                    <button onclick="Payment()"> Payment</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+        </div>
+    </body>
+</html>
